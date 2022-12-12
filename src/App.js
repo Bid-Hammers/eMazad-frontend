@@ -8,6 +8,7 @@ import ListOfItems from "./components/Categories/ListOfItems";
 import NavBar from "./components/header/NavBar";
 import Hero from "./components/hero/Hero";
 import Profile from "./components/Profile";
+import Footer from "./components/footer/Footer";
 function App() {
   return (
     <div>
@@ -24,6 +25,7 @@ function App() {
       
       <Login />
       <Signup />
+      <Footer />
     </div>
   );
 }
