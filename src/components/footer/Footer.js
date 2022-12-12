@@ -59,11 +59,11 @@ export default function Footer() {
             </div>
             <div className="w-full lg:w-6/12 px-4">
               <div className="flex flex-wrap items-top mb-6">
-                <div className="w-full lg:w-4/12 px-4 ml-auto">
+                <div className="w-full lg:w-4/12 px-4 ml-auto ">
                   <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
                     Useful Links
                   </span>
-                  <ul className="list-unstyled">
+                  <ul className="list-unstyled ">
                     <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
@@ -78,14 +78,6 @@ export default function Footer() {
                         href="https://blog.creative-tim.com?ref=nr-footer"
                       >
                         Blog
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://www.github.com/creativetimofficial?ref=nr-footer"
-                      >
-                        Github
                       </a>
                     </li>
                     <li>

@@ -5,14 +5,25 @@ module.exports = {
   purge: {
     enabled: true,
     content: [
-      "./public/**/*.html",
-      "./public/*.html",
-      "./src/**/*.js",
-      "./src/*.js",
       "./src/**/*.html",
-      "./src/*.html",
-      "./public/**/*.js",
-      "./public/*.js",
+      "./src/**/*.js",
+      "./src/**/*.jsx",
+      "./src/**/*.ts",
+      "./src/**/*.tsx",
+
+      "./public/index.html",
+
+      "./src/components/**/*.js",
+      "./src/components/**/*.jsx",
+      "./src/components/**/*.ts",
+      "./src/components/**/*.tsx",
+
+      "./src/pages/**/*.js",
+      "./src/pages/**/*.jsx",
+      "./src/pages/**/*.ts",
+      "./src/pages/**/*.tsx",
+
+   
     ],
     options: {
       safelist: [],
