@@ -42,14 +42,32 @@ This is a simple bidding app that allows users to bid on items and the highest b
 - work on the items page (Ahmad)
 - design the login/VERIFICATION and signup page (Saeed)
 - add item page (Saeed)
-    - additem functions DONE
-    - design  
-- fix edit item page (Saeed) DONE 
+  - additem functions DONE
+  - design
+- fix edit item page (Saeed) DONE
 - work on upload images (Saeed) DONE -NEEDS TESTING FROM EVERYONE
 
 - add edit profile page (Saeed)
 - after finish profile page use it to show the other users profile (Saeed)
 
-
 - backend: items must have bearerAuth (FOR LATER...)
 - Backward button (FOR LATER...)
+
+- subscribe page (Done)
+- Footer (Done)
+- LOGO (Done)
+- about us page (Done)
+- contact us page
+- Title. + line between
+- profile items
+- add item page
+- modal for delete item - comment - reply
+- edit item - edit profile
+- toast (Done) except for the admin
+- rating profile design
+- SOCKET
+- admin design
+- is auth for every page
+- report item
+- colors theme
+- bearerAuth

@@ -33,7 +33,7 @@ import { addBid } from "../../../store/actions/bidActions";
 import { handleFavorite } from "../../../store/actions/favoriteActions";
 import { showTime, timeLeft } from "../../../store/actions/generalActions";
 import { deleteItem, getItem } from "../../../store/actions/itemActions";
-import { handleRating } from "../../../store/actions/ratingActions";
+import { handleRatingFromItem } from "../../../store/actions/ratingActions";
 import { selectIsAuth, selectUser } from "../../../store/features/authSlicer";
 import { selectItem, selectUserRating } from "../../../store/features/itemSlicer";
 import RenderTimeLeft from "../../../utils/RenderTimeLeft";
@@ -85,7 +85,7 @@ export default function Item() {
           _hover={{ color: "blue.300" }}
           display="inline"
           cursor="pointer"
-          onClick={() => handleRating(dispatch, i, item, userRating.rating, toast)}
+          onClick={() => handleRatingFromItem(dispatch, i, item, userRating.rating, toast)}
         />
       );
     }
