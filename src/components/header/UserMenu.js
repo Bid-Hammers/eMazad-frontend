@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../store/actions/authActions";
 import { selectUser } from "../../store/features/authSlicer";
+import { FiHome } from "react-icons/fi";
 
 export default function UserMenu({ setCurrentTab }) {
   const dispatch = useDispatch();
@@ -17,6 +18,9 @@ export default function UserMenu({ setCurrentTab }) {
       <MenuList borderRadius="2xl" boxShadow="md">
         <Link to={`/profile/${user.id}`} onClick={() => setCurrentTab("profile")}>
           <MenuItem icon={<IoPersonCircleOutline size="20px" />}>Profile</MenuItem>
+        </Link>
+        <Link to={`/admin`}>
+          <MenuItem icon={<FiHome size="20px" />}>Dashboard</MenuItem>
         </Link>
         <Link to="/" onClick={() => logout(dispatch)}>
           <MenuItem icon={<IoLogOutOutline size="20px" />}>Logout</MenuItem>
