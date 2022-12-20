@@ -26,6 +26,8 @@ import {
   Text,
   useDisclosure,
   useToast,
+  useColorModeValue,
+  useColorMode
 } from "@chakra-ui/react";
 import { FaGenderless } from "react-icons/fa";
 import { IoAddCircle, IoPencil } from "react-icons/io5";
@@ -37,6 +39,11 @@ import { uploadUserImage, validateImage } from "../../store/actions/authActions"
 import { BsFillCalendarDateFill } from "react-icons/bs";
 
 function EditProfileModal({ user }) {
+
+  const colorButton = useColorModeValue('blue.600', 'blue.300');
+  const textColor = useColorModeValue("gray.700", "white");
+  const { colorMode } = useColorMode();
+
   const error = useSelector((state) => state.profile.error);
   const loading = useSelector((state) => state.profile.loading);
 
@@ -65,7 +72,11 @@ function EditProfileModal({ user }) {
 
       <Modal isOpen={isOpen} size="3xl" onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent
+          bg={colorMode === "light" ? "gray.200" : "gray.700"}
+          color={colorMode === "light" ? "gray.700" : "gray.200"}
+          borderRadius="3xl"
+        >
           <ModalHeader>Edit your profile</ModalHeader>
           <ModalCloseButton />
 
@@ -77,23 +88,59 @@ function EditProfileModal({ user }) {
                 <FormLabel htmlFor="image" >
                   <IoAddCircle style={{ width: '25px', height: '25px', cursor: 'pointer', position: 'absolute' }} />
                 </FormLabel>
-                <Input type="file" id="image" name="image" hidden accept="image/png, image/jpeg" onChange={(e) => validateImage(e, dispatch, toast)} />
+                <Input
+                  type="file"
+                  id="image"
+                  name="image"
+                  hidden accept="image/png, image/jpeg"
+                  onChange={(e) => validateImage(e, dispatch, toast)}
+                />
               </Flex>
 
               <HStack>
                 <FormControl>
                   <FormLabel>Full Name</FormLabel>
-                  <Input type="text" name="fullName" placeholder="Full Name" autoComplete="fullname" variant="auth" defaultValue={user.fullName} />
+                  <Input
+                    type="text"
+                    name="fullName"
+                    placeholder="Full Name"
+                    autoComplete="fullname"
+                    variant="auth"
+                    defaultValue={user.fullName}
+                    bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                    borderRadius="3xl"
+                    color={textColor}
+                  />
                 </FormControl>
 
                 <FormControl>
                   <FormLabel>Username</FormLabel>
-                  <Input type="text" name="userName" placeholder="Username" autoComplete="username" variant="auth" defaultValue={user.userName} />
+                  <Input
+                    type="text"
+                    name="userName"
+                    placeholder="Username"
+                    autoComplete="username"
+                    variant="auth"
+                    defaultValue={user.userName}
+                    bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                    borderRadius="3xl"
+                    color={textColor}
+                  />
                 </FormControl>
               </HStack>
               <FormControl>
                 <FormLabel mt='4'>Email</FormLabel>
-                <Input type="email" name="email" placeholder="Email" autoComplete="username" variant="auth" defaultValue={user.email} />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  autoComplete="username"
+                  variant="auth"
+                  defaultValue={user.email}
+                  bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                  borderRadius="3xl"
+                  color={textColor}
+                />
               </FormControl>
 
               {/* <FormControl>
@@ -125,7 +172,17 @@ function EditProfileModal({ user }) {
 
               <FormControl>
                 <FormLabel mt='4'>Phone Number</FormLabel>
-                <Input type="tel" name="phoneNumber" placeholder="Phone Number" autoComplete="tel" variant="auth" defaultValue={user.phoneNumber} />
+                <Input
+                  type="tel"
+                  name="phoneNumber"
+                  placeholder="Phone Number"
+                  autoComplete="tel"
+                  variant="auth"
+                  defaultValue={user.phoneNumber}
+                  bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                  borderRadius="3xl"
+                  color={textColor}
+                />
               </FormControl>
 
               <HStack >
@@ -166,7 +223,13 @@ function EditProfileModal({ user }) {
                 </Alert>
               )}
 
-              <Button variant="primary" type="submit" mr={3} onClick={onClose}>
+              <Button
+                type="submit"
+                mr={3} onClick={onClose}
+                bg={colorButton}
+                _hover={{ light: 'blue.300', dark: 'blue.600' }}
+                color={textColor}
+              >
                 Save
               </Button>
               <Button onClick={onClose}>Cancel</Button>

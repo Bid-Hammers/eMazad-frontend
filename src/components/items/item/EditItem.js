@@ -24,6 +24,7 @@ import {
   useToast,
   HStack,
   useColorModeValue,
+  useColorMode
 } from "@chakra-ui/react";
 import { FaDollarSign } from "react-icons/fa";
 import { IoPencil } from "react-icons/io5";
@@ -33,8 +34,9 @@ import { editItem } from "../../../store/actions/itemActions";
 import { uploadItemImage, validateImage } from "../../../store/actions/itemActions";
 
 function EditItem({ item }) {
-  const colorBackInput = useColorModeValue('gray.300', 'gray.700');
+  const colorButton = useColorModeValue('blue.600', 'blue.300');
   const textColor = useColorModeValue("gray.700", "white");
+  const { colorMode } = useColorMode();
   const error = useSelector((state) => state.item.error);
   const loading = useSelector((state) => state.item.loading);
   const userId = useSelector((state) => state.auth.user.id);
@@ -72,9 +74,13 @@ function EditItem({ item }) {
         <span style={{ marginLeft: "0.6rem" }}>Edit Item</span>
       </Button>
 
-      <Modal isOpen={isOpen} size='5xl' onClose={onClose} bg='gray.100'>
+      <Modal isOpen={isOpen} size='5xl' onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent
+          bg={colorMode === "light" ? "gray.200" : "gray.700"}
+          color={colorMode === "light" ? "gray.700" : "gray.200"}
+          borderRadius="3xl"
+        >
           <ModalHeader>Edit your item</ModalHeader>
           <ModalCloseButton />
 
@@ -89,17 +95,19 @@ function EditItem({ item }) {
                     placeholder="Title"
                     variant="auth"
                     defaultValue={item.itemTitle}
-                    bg={colorBackInput}
+                    bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                    borderRadius="3xl"
                     color={textColor}
                   />
                 </FormControl>
                 <FormControl mt={4} isRequired>
-                  <FormLabel>Category Item</FormLabel>
+                  <FormLabel>Category</FormLabel>
                   <InputGroup>
                     <Select name="category"
                       variant="auth"
                       defaultValue={item.category}
-                      bg={colorBackInput}
+                      bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                      borderRadius="3xl"
                       color={textColor}
                     >
                       <option disabled>Select Category</option>
@@ -127,20 +135,22 @@ function EditItem({ item }) {
                       placeholder="subCategory"
                       variant="auth"
                       defaultValue={item.subCategory}
-                      bg={colorBackInput}
+                      bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                      borderRadius="3xl"
                       color={textColor}
                     />
                   </InputGroup>
                 </FormControl>
 
                 <FormControl mt={4} isRequired>
-                  <FormLabel mt={4} >Condition Item</FormLabel>
+                  <FormLabel mt={4} >Condition</FormLabel>
                   <InputGroup>
                     {/* <InputLeftElement pointerEvents="none" children={<TfiEmail/>} /> */}
                     <Select
                       name="itemCondition" variant="auth"
                       defaultValue={item.itemCondition}
-                      bg={colorBackInput}
+                      bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                      borderRadius="3xl"
                       color={textColor}
                     >
                       <option disabled>Select Condition</option>
@@ -165,7 +175,8 @@ function EditItem({ item }) {
                       variant="auth"
                       defaultValue={item.startDate && item.startDate.slice(0, 16)}
                       onChange={(e) => handleEndDate(e)}
-                      bg={colorBackInput}
+                      bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                      borderRadius="3xl"
                       color={textColor}
                     />
                   </InputGroup>
@@ -182,7 +193,8 @@ function EditItem({ item }) {
                       min={minEndDate}
                       variant="auth"
                       defaultValue={item.endDate && item.endDate.slice(0, 16)}
-                      bg={colorBackInput}
+                      bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                      borderRadius="3xl"
                       color={textColor}
                     />
                   </InputGroup>
@@ -191,7 +203,7 @@ function EditItem({ item }) {
 
               <HStack spacing={4} >
                 <FormControl isRequired>
-                  <FormLabel mt={4}>Condition Item</FormLabel>
+                  <FormLabel mt={4}>Initial Price</FormLabel>
                   <InputGroup>
                     <InputLeftElement children={<FaDollarSign />} />
 
@@ -201,7 +213,8 @@ function EditItem({ item }) {
                       placeholder="initialPrice"
                       variant="auth"
                       defaultValue={item.initialPrice}
-                      bg={colorBackInput}
+                      bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                      borderRadius="3xl"
                       color={textColor}
                     />
 
@@ -237,7 +250,8 @@ function EditItem({ item }) {
                   variant="auth"
                   rowGap='20'
                   defaultValue={item.itemDescription}
-                  bg={colorBackInput}
+                  bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                  borderRadius="3xl"
                   color={textColor}
                 />
               </FormControl>
@@ -255,7 +269,13 @@ function EditItem({ item }) {
                 </Alert>
               )}
 
-              <Button variant="primary" type="submit" mr={3} onClick={onClose}>
+              <Button
+                type="submit"
+                mr={3} onClick={onClose}
+                bg={colorButton}
+                _hover={{ light: 'blue.300', dark: 'blue.600' }}
+                color={textColor}
+              >
                 Save
               </Button>
               <Button onClick={onClose}>Cancel</Button>
