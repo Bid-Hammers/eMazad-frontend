@@ -56,43 +56,44 @@ function EditProfileModal({ user }) {
 
   return (
     <>
-      <Button w="100%" onClick={onOpen} variant="none" size="sm" _hover={{ color: "blue.600", bg: "gray.300" }} 
-      alignItems="center" justifyContent="left" borderRadius="0"
+      <Button w="100%" onClick={onOpen} variant="none" size="sm" _hover={{ color: "blue.600", bg: "gray.300" }}
+        alignItems="center" justifyContent="left" borderRadius="0"
       >
         {<IoPencil />}
-        <span  style={{ marginLeft: "0.6rem" }}>Edit Profile</span>
+        <span style={{ marginLeft: "0.6rem" }}>Edit Profile</span>
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} size="3xl" onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Edit your profile</ModalHeader>
           <ModalCloseButton />
 
           <form onSubmit={(e) => handleSubmit(e)}>
-            <ModalBody pb={6}>
+            <ModalBody pb={3}>
 
-            <Flex justify="center" align="center" >
-              <Avatar size="2xl" src={user.image} boxShadow={{ base: 'none', sm: '0 0 60px rgba(0, 0, 0, 0.5)' }} mb="1em"/>
-              <FormLabel htmlFor="image" >
-                <IoAddCircle style={{ width: '25px', height: '25px', cursor: 'pointer', position: 'absolute' }}/>
-              </FormLabel>
-              <Input type="file" id="image" name="image" hidden accept="image/png, image/jpeg" onChange={(e) => validateImage(e, dispatch, toast)}/>
-            </Flex>
+              <Flex justify="center" align="center" >
+                <Avatar size="2xl" src={user.image} boxShadow={{ base: 'none', sm: '0 0 60px rgba(0, 0, 0, 0.5)' }} mb="1em" />
+                <FormLabel htmlFor="image" >
+                  <IoAddCircle style={{ width: '25px', height: '25px', cursor: 'pointer', position: 'absolute' }} />
+                </FormLabel>
+                <Input type="file" id="image" name="image" hidden accept="image/png, image/jpeg" onChange={(e) => validateImage(e, dispatch, toast)} />
+              </Flex>
 
+              <HStack>
+                <FormControl>
+                  <FormLabel>Full Name</FormLabel>
+                  <Input type="text" name="fullName" placeholder="Full Name" autoComplete="fullname" variant="auth" defaultValue={user.fullName} />
+                </FormControl>
+
+                <FormControl>
+                  <FormLabel>Username</FormLabel>
+                  <Input type="text" name="userName" placeholder="Username" autoComplete="username" variant="auth" defaultValue={user.userName} />
+                </FormControl>
+              </HStack>
               <FormControl>
-                <FormLabel>Full Name</FormLabel>
-                <Input type="text" name="fullName" placeholder="Full Name" autoComplete="fullname" variant="auth" defaultValue={user.fullName}/>
-              </FormControl>
-
-              <FormControl>
-                <FormLabel>Username</FormLabel>
-                <Input type="text" name="userName" placeholder="Username" autoComplete="username" variant="auth" defaultValue={user.userName}/>
-              </FormControl>
-
-              <FormControl>
-                <FormLabel>Email</FormLabel>
-                <Input type="email" name="email" placeholder="Email" autoComplete="username" variant="auth" defaultValue={user.email}/>
+                <FormLabel mt='4'>Email</FormLabel>
+                <Input type="email" name="email" placeholder="Email" autoComplete="username" variant="auth" defaultValue={user.email} />
               </FormControl>
 
               {/* <FormControl>
@@ -122,14 +123,14 @@ function EditProfileModal({ user }) {
               </InputGroup>
             </FormControl> */}
 
-            <FormControl>
-                <FormLabel>Phone Number</FormLabel>
-                <Input type="tel" name="phoneNumber" placeholder="Phone Number" autoComplete="tel" variant="auth" defaultValue={user.phoneNumber}/>
+              <FormControl>
+                <FormLabel mt='4'>Phone Number</FormLabel>
+                <Input type="tel" name="phoneNumber" placeholder="Phone Number" autoComplete="tel" variant="auth" defaultValue={user.phoneNumber} />
               </FormControl>
 
-              <HStack>
-              <Box w="100%">
-                <FormControl pb="1em" >
+              <HStack >
+                <FormControl pb="1em" w="100%">
+                  <FormLabel mt='4'>Email</FormLabel>
                   <InputGroup>
                     <Select name="gender" variant="auth" icon={<FaGenderless />} defaultValue={user.gender}>
                       <option value="" icon={<FaGenderless color="grey.300" />} disabled>
@@ -140,20 +141,19 @@ function EditProfileModal({ user }) {
                     </Select>
                   </InputGroup>
                 </FormControl>
-              </Box>
 
-              <Box>
-                <FormControl pb="1em" >
+                <FormControl pb="1em" w="100%" >
+                  <FormLabel mt='4'>Email</FormLabel>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none" children={<BsFillCalendarDateFill color="gray.300" />} />
-                    <Input type="date" name="birthDate" placeholder="Birth Date" autoComplete="bday" variant="auth" defaultValue={user.birthDate}/>
+                    <Input type="date" name="birthDate" placeholder="Birth Date" autoComplete="bday" variant="auth" defaultValue={user.birthDate} />
                   </InputGroup>
                 </FormControl>
-              </Box>
-            </HStack>
+
+              </HStack>
 
 
-            
+
             </ModalBody>
 
             <ModalFooter>
